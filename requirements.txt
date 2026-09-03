@@ -1,4 +1,3 @@
-highrise-bot-sdk==1.0.0
+highrise-bot-sdk==25.1.0
 python-dotenv==1.0.0
 aiohttp==3.9.0
-asyncio==3.4.3
