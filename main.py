@@ -6,10 +6,23 @@ from highrise.models import UserID, RoomID
 import json
 from datetime import datetime, timedelta
 import random
+from dotenv import load_dotenv
 
-# Configuration
-API_TOKEN = "b5d74823255656efc10d9d8f386180dca66a4ad99662afb3e29f11b3970c8941"
-ROOM_ID = "6a394123cd2ff755d187ae89"
+# Load environment variables from .env file
+load_dotenv()
+
+# Configuration - Read from environment variables
+API_TOKEN = os.getenv("API_TOKEN", "b5d74823255656efc10d9d8f386180dca66a4ad99662afb3e29f11b3970c8941")
+ROOM_ID = os.getenv("ROOM_ID", "6a394123cd2ff755d187ae89")
+
+# Verify credentials are set
+if not API_TOKEN or not ROOM_ID:
+    print("❌ ERROR: API_TOKEN and ROOM_ID must be set in environment variables!")
+    exit(1)
+
+print(f"✅ Bot configured with:")
+print(f"   API_TOKEN: {API_TOKEN[:20]}...")
+print(f"   ROOM_ID: {ROOM_ID}")
 
 class HighrisePremiumBot(BaseBot):
     def __init__(self):
@@ -51,7 +64,7 @@ class HighrisePremiumBot(BaseBot):
     def _load_emotes(self):
         """Load 200+ emotes"""
         return {
-            "love": "❤️", "fire": "���", "cool": "😎", "happy": "😊", "sad": "😢",
+            "love": "❤️", "fire": "🔥", "cool": "😎", "happy": "😊", "sad": "😢",
             "angry": "😠", "heart": "💕", "star": "⭐", "moon": "🌙", "sun": "☀️",
             "rain": "🌧️", "snow": "❄️", "rocket": "🚀", "diamond": "💎", "crown": "👑",
             "skull": "💀", "ghost": "👻", "alien": "👽", "robot": "🤖", "clown": "🤡",
@@ -82,7 +95,7 @@ class HighrisePremiumBot(BaseBot):
             "unlock": "🔓", "key": "🔑", "door": "🚪", "window": "🪟", "house": "🏠",
             "church": "⛪", "hospital": "🏥", "bank": "🏦", "hotel": "🏨", "school": "🏫",
             "library": "📚", "park": "🏞️", "fountain": "⛲", "bridge": "🌉", "tower": "🗼",
-            "mountain": "⛰️", "volcano": "🌋", "beach": "🏖️", "desert": "🏜️", "forest": "🌲",
+            "mountain": "⛰️", "volcano": "🌋", "beach": "🏖��", "desert": "🏜️", "forest": "🌲",
             "tree": "🌳", "flower": "🌸", "leaf": "🍃", "herb": "🌿", "mushroom": "🍄",
             "cactus": "🌵", "palm": "🌴", "evergreen": "🌲", "deciduous": "🌳", "willow": "🌿",
             "sunrise": "🌅", "sunset": "🌄", "rainbow": "🌈", "cloud": "☁️", "storm": "⛈️",
@@ -99,7 +112,7 @@ class HighrisePremiumBot(BaseBot):
             "zebra": "🦓", "giraffe": "🦒", "hippo": "🦛", "rhino": "🦏", "elephant": "🐘",
             "camel": "🐪", "llama": "🦙", "emu": "🐨", "penguin": "🐧", "duck": "🦆",
             "swan": "🦢", "goose": "🦢", "owl": "🦉", "eagle": "🦅", "vulture": "🦅",
-            "parrot": "🦜", "peacock": "🦚", "flamingo": "🦩", "hummingbird": "🐦", "chicken": "🐔",
+            "parrot": "🦜", "peacock": "��", "flamingo": "🦩", "hummingbird": "🐦", "chicken": "🐔",
             "rooster": "🐓", "turkey": "🦃", "dove": "🕊️", "raven": "🐦", "crow": "🐦",
             "bones": "🦴", "skull": "💀", "zombie": "🧟", "mummy": "🏇"
         }
